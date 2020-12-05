@@ -1,0 +1,65 @@
+[
+  {
+    "model": "users.user",
+    "fields": {
+      "username": "Little",
+      "email": "jeniferwest@waab.com",
+      "password1": "bonjour123",
+      "password2": "bonjour123"
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "username": "Stephens",
+      "email": "barbaravaughn@columella.com",
+      "password1": "bonjour123",
+      "password2": "bonjour123"
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "username": "Carrillo",
+      "email": "blankenshipchambers@nixelt.com",
+      "password1": "bonjour123",
+      "password2": "bonjour123"
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "username": "Gamble",
+      "email": "mullengould@genmex.com",
+      "password1": "bonjour123",
+      "password2": "bonjour123"
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "username": "Gutierrez",
+      "email": "kenyabrown@exoblue.com",
+      "password1": "bonjour123",
+      "password2": "bonjour123"
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "username": "Oconnor",
+      "email": "roxannehoover@keengen.com",
+      "password1": "bonjour123",
+      "password2": "bonjour123"
+    }
+  },
+  {
+    "model": "users.user",
+    "fields": {
+      "username": "Mccormick",
+      "email": "bookerwhitfield@tripsch.com",
+      "password1": "bonjour123",
+      "password2": "bonjour123"
+    }
+  }
+]
