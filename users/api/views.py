@@ -1,11 +1,11 @@
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, mixins, generics
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 
 from users.api.persmissions import IsOwnProfileOrReadOnly
 
 from users.models import Profile, User
-from users.api.serializers import ProfileSerializer
+from users.api.serializers import ProfileSerializer, ProfileAvatarSerializer
 
 
 class AllProfileViewSet(viewsets.GenericViewSet,
@@ -64,3 +64,12 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         )
 
         return queryset
+
+
+class AvatarUpdateView(generics.UpdateAPIView):
+    serializer_class = ProfileAvatarSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        profile_object = self.request.user.profile
+        return profile_object

@@ -11,10 +11,17 @@ class UserSerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
+    photo = serializers.ImageField(read_only=True)
 
     class Meta:
         model = Profile
         fields = "__all__"
+
+
+class ProfileAvatarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ("photo",)
 
 
 class TokenSerializer(serializers.ModelSerializer):
