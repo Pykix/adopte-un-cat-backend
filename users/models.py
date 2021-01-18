@@ -23,4 +23,4 @@ class Profile(models.Model):
     photo = models.ImageField(blank=True)
 
     def __str__(self):
-        return "{} - {}".format(self.user.username, self.user.email)
+        return "{}".format(self.user.username)
