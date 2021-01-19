@@ -1,10 +1,11 @@
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
 from rest_framework import viewsets
-
 from rest_framework.response import Response
 
 from like.serializers import LikeSerializer
 from like.models import Like
-from users.models import Profile
+from users.models import User
 
 
 class LikeViewSet(viewsets.ModelViewSet):
@@ -12,13 +13,28 @@ class LikeViewSet(viewsets.ModelViewSet):
     serializer_class = LikeSerializer
 
     def get_object(self):
-        return self.request.user.profile
+        return self.request.user
 
     def create(self, request, *args, **kwargs):
-        to_profile = request.data.get('to_profile')
-        to_profile = Profile.objects.get(pk=to_profile)
+        to_user = request.data.get('to_user')
+        to_user = User.objects.get(pk=to_user)
         user = self.get_object()
 
-        new_like = Like.objects.create(from_profile=user, to_profile=to_profile)
+        new_like = Like.objects.create(from_user=user, to_user=to_user)
 
         return Response(LikeSerializer(new_like).data)
+
+    def filter_queryset(self, queryset):
+        queryset = super().filter_queryset(queryset)
+        from_user = self.get_object()
+        print(from_user)
+        finder = get_object_or_404(
+            User, id=from_user.id
+        )
+        queryset = queryset.filter(
+            Q(from_user=finder.id) |
+            Q(to_user=finder.id)
+            
+        )
+
+        return queryset
