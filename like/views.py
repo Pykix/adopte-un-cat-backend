@@ -25,6 +25,7 @@ class LikeViewSet(viewsets.ModelViewSet):
 
         return Response(LikeSerializer(new_like).data)
 
+
     def filter_queryset(self, queryset):
         queryset = super(LikeViewSet, self).filter_queryset(queryset)
         from_user = self.get_object()
