@@ -1,11 +1,14 @@
 from rest_framework import serializers
 
 from like.models import Like
+from users.api.serializers import ProfileSerializer
 
 
 class LikeSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
-    liked_user = serializers.StringRelatedField()
+    from_user = ProfileSerializer(read_only=True)
+    to_user = ProfileSerializer(read_only=True)
+
+    # to_user = serializers.StringRelatedField()
 
     class Meta:
         model = Like

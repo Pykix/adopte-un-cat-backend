@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from like.serializers import LikeSerializer
 from like.models import Like
 from users.models import User
+from users.models import Profile
 
 
 class LikeViewSet(viewsets.ModelViewSet):
@@ -25,16 +26,16 @@ class LikeViewSet(viewsets.ModelViewSet):
         return Response(LikeSerializer(new_like).data)
 
     def filter_queryset(self, queryset):
-        queryset = super().filter_queryset(queryset)
+        queryset = super(LikeViewSet, self).filter_queryset(queryset)
         from_user = self.get_object()
-        print(from_user)
+
         finder = get_object_or_404(
-            User, id=from_user.id
+            Profile, user_id=from_user
         )
+        print(finder)
         queryset = queryset.filter(
             Q(from_user=finder.id) |
             Q(to_user=finder.id)
-            
         )
 
         return queryset
