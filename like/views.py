@@ -19,9 +19,10 @@ class LikeViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         to_user = request.data.get('to_user')
         to_user = User.objects.get(pk=to_user)
+        print(to_user)
         user = self.get_object()
 
-        new_like = Like.objects.create(from_user=user, to_user=to_user)
+        new_like = Like.objects.create(from_user=user.profile, to_user=to_user.profile)
 
         return Response(LikeSerializer(new_like).data)
 
