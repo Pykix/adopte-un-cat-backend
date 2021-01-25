@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from rest_framework import viewsets
+from rest_framework import status
 from rest_framework.response import Response
 
 from like.serializers import LikeSerializer
@@ -26,6 +27,12 @@ class LikeViewSet(viewsets.ModelViewSet):
 
         return Response(LikeSerializer(new_like).data)
 
+
+
+    def destroy(self, request, pk=None):
+        instance = self.queryset.get(pk=pk)
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
     def filter_queryset(self, queryset):
         queryset = super(LikeViewSet, self).filter_queryset(queryset)
