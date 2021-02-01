@@ -12,6 +12,7 @@ django-allauth==0.44.0
 django-cors-headers==3.6.0
 django-registration==3.1.1
 django-rest-auth==0.9.5
+django-widget-tweaks   1.4.8 
 djangorestframework==3.12.2
 idna==2.10
 isort==5.7.0

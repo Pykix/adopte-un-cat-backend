@@ -54,7 +54,7 @@ class LikeViewSet(viewsets.ModelViewSet):
         )
         print(finder)
         queryset = queryset.filter(
-            Q(from_user=finder.id)
+            Q(to_user=finder.id)
         )
 
         return queryset

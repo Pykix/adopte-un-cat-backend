@@ -5,12 +5,14 @@ from users.api.views import InterestedGenderViewSet
 from users.api.views import UserProfileViewSet
 from users.api.views import AvatarUpdateView
 from like.views import LikeViewSet
+from chat.views import MessageViewSet
 
 router = DefaultRouter()
 router.register(r"profiles", AllProfileViewSet, basename="profile-list")
 router.register(r"discover", InterestedGenderViewSet, basename="profile-discover")
 router.register(r"user-profile", UserProfileViewSet, basename="user-profile")
 router.register(r"like", LikeViewSet, basename="like")
+router.register(r"message", MessageViewSet, basename="message")
 
 
 urlpatterns = [
