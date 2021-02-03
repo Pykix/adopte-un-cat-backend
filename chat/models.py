@@ -12,6 +12,8 @@ class Message(models.Model):
     message = models.CharField(max_length=1200)
     timestamp = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)
+    like = models.ForeignKey(Like, on_delete=models.CASCADE, 
+                                related_name="like")
 
     def __str__(self):
         return "{} - {}".format(self.sender, self.receiver)
