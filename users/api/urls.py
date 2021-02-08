@@ -11,8 +11,8 @@ router = DefaultRouter()
 router.register(r"profiles", AllProfileViewSet, basename="profile-list")
 router.register(r"discover", InterestedGenderViewSet, basename="profile-discover")
 router.register(r"user-profile", UserProfileViewSet, basename="user-profile")
-router.register(r"like", LikeViewSet, basename="like")
-router.register(r"message", MessageViewSet, basename="message")
+router.register(r"like", LikeViewSet, basename="like-detail")
+router.register(r"message", MessageViewSet, basename="message-detail")
 
 
 urlpatterns = [

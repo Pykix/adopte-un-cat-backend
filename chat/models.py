@@ -14,6 +14,7 @@ class Message(models.Model):
     is_read = models.BooleanField(default=False)
     like = models.ForeignKey(Like, on_delete=models.CASCADE, 
                                 related_name="messages")
+    
 
     def __str__(self):
         return "{} - {}".format(self.sender, self.receiver)

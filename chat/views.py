@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
@@ -9,8 +10,10 @@ from django.db.models import Q
 from chat.models import Message
 from chat.serializers import MessageSerializer
 from users.models import User
+# from users.api.permissions import IsOwnProfileOrReadOnly
 
 class MessageViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
 

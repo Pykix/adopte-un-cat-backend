@@ -153,6 +153,7 @@ REST_FRAMEWORK = {
     )
 }
 
+
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'users.api.serializers.UserSerializer',
     'TOKEN_SERIALIZER': 'users.api.serializers.TokenSerializer'
