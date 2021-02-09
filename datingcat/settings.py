@@ -14,8 +14,6 @@ from pathlib import Path
 
 import os
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,6 +31,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -138,6 +137,7 @@ USE_TZ = True
 AUTH_USER_MODEL = "users.User"
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "static"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'upload'
 
@@ -153,7 +153,6 @@ REST_FRAMEWORK = {
     )
 }
 
-
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'users.api.serializers.UserSerializer',
     'TOKEN_SERIALIZER': 'users.api.serializers.TokenSerializer'
@@ -162,3 +161,26 @@ REST_AUTH_SERIALIZERS = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080"
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Adopteuncat",
+    "site_header": "Adopteuncat Admin",
+    "welcome_sign": "Bienvenue",
+    "copyright": "adopteuncat inc",
+    # "site_logo": "jazzmin/img/cat.png",
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "chat.message": "far fa-comment-dots",
+        "account.emailaddress": "fas fa-at",
+        "socialaccount.socialapp": "fab fa-twitter",
+        "socialaccount.socialaccount": "fas fa-users",
+        "socialaccount.socialtoken": "fab fa-connectdevelop",
+        "authtoken.tokenproxy": "fas fa-passport",
+        "like.like": "fas fa-heart",
+        "sites.site": "fas fa-sitemap",
+        "users.profile": "fas fa-address-card",
+        "users.user": "fas fa-user-alt",
+    },
+}
