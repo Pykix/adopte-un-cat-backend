@@ -5,3 +5,6 @@ upload
 __pycache__
 .vscode
 databasedump.json
+doc
+Makefile
+make.bat
