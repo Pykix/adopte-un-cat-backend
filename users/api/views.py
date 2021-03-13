@@ -10,21 +10,34 @@ from users.api.serializers import ProfileSerializer, ProfileAvatarSerializer
 
 class AllProfileViewSet(viewsets.GenericViewSet,
                         mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.ListModelMixin):
+    """Profile ViewSet
+
+    Args:
+        viewsets (Generic): ViewSet
+        mixins (Retrieve): Retrieve
+        mixins (Update): Update
+        mixins (List): List
+    """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [IsAuthenticated, IsOwnProfileOrReadOnly]
 
 
 class InterestedGenderViewSet(viewsets.ReadOnlyModelViewSet):
+    """Sort profile for return only interested gender
+
+    Args:
+        viewsets (ReadOnly): ReadOnly ViewSet
+
+    Returns:
+        queryset: return queryset
+    """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
         return self.request.user
-
-    # def get_queryset(self):
-    #     current_user = self.get_object()
 
     def filter_queryset(self, queryset):
         queryset = super().filter_queryset(queryset)
@@ -44,6 +57,14 @@ class InterestedGenderViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
+    """User Profile ViewSet
+
+    Args:
+        viewsets (ModelViewSet): Viewset
+
+    Returns:
+        queryset: return queryset
+    """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [IsAuthenticated, IsOwnProfileOrReadOnly]
@@ -67,6 +88,14 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
 
 class AvatarUpdateView(generics.UpdateAPIView):
+    """ViewSet for update User Avatar
+
+    Args:
+        generics (Update): ViewSet
+
+    Returns:
+        queryset: return queryset
+    """
     serializer_class = ProfileAvatarSerializer
     permission_classes = [IsAuthenticated]
 
